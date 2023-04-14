@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69244386b93d5a644ab1e8ece52c4025, type: 3}
+  m_Name: GameSettingsInstaller
+  m_EditorClassIdentifier: 
+  _gameSettings:
+    Windows:
+    - WindowId: 0
+      WindowPrefab: {fileID: 6225095462955607358, guid: e999633214b70fd40aa77569a6fe520d, type: 3}
+    - WindowId: 1
+      WindowPrefab: {fileID: 8707354245229804156, guid: 4662da99c8080444f9a074f956182af5, type: 3}
+    Items:
+    - ItemId: 0
+      SpriteName: Butter_Pieces
+    - ItemId: 1
+      SpriteName: Meat_1
+    - ItemId: 2
+      SpriteName: Sliced_Bread
