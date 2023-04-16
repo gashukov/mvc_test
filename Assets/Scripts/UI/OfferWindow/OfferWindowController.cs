@@ -1,20 +1,16 @@
-﻿using UniRx;
-using UnityEngine;
+﻿using UI.Core;
 
 namespace UI.OfferWindow
 {
     public class OfferWindowController : WindowControllerBase<OfferWindowModel>
     {
-        private readonly CompositeDisposable _disposable = new CompositeDisposable();
-
-        public OfferWindowController(OfferWindowModel windowModel)
+        public OfferWindowController(IUIService uiService, OfferWindowModel windowModel) : base(uiService, windowModel)
         {
-            WindowModel = windowModel;
         }
 
         public void OfferBuyClicked()
         {
-            Debug.Log($"[MVC][{GetType().Name}] Offer buy");
+            UIService.OpenWindowDefault<MainWindowData>();
         }
     }
 }

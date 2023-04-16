@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UI;
+using UI.Core;
+using UI.OfferWindow;
 using UnityEngine;
 
 namespace Core

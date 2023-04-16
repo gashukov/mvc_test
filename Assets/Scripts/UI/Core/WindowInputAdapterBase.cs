@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
 
-namespace UI.OfferWindow
+namespace UI.Core
 {
     public abstract class WindowInputAdapterBase<TController> : MonoBehaviour, IWindowInputAdapter where TController : IWindowController
     {
         protected TController WindowController;
-        protected abstract void ConstructInner();
 
         public void Construct(IWindowController windowController)
         {
             WindowController = (TController)windowController;
-            ConstructInner();
+            Initialize();
         }
-    }
 
-    public interface IWindowInputAdapter
-    {
-        public void Construct(IWindowController windowController);
+        protected abstract void SetupValidation();
+
+        protected abstract void SubscribeToInput();
+
+        private void Initialize()
+        {
+            SetupValidation();
+            SubscribeToInput();
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UI;
+using UI.OfferWindow;
 using UnityEngine;
 
 public class ItemGrid : MonoBehaviour

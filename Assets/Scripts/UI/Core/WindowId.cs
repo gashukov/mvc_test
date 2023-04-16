@@ -1,4 +1,4 @@
-﻿namespace Core
+﻿namespace UI.Core
 {
     public enum WindowId
     {

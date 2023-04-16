@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 699025624}
   - component: {fileID: 699025623}
   - component: {fileID: 699025625}
+  - component: {fileID: 699025626}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -428,6 +429,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIRoot: {fileID: 121452107}
+--- !u!114 &699025626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699025622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef95308a49064778a3e2ba56d1812aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &908759603
 GameObject:
   m_ObjectHideFlags: 0

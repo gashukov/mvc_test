@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using TMPro;
+using UI.Core;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,8 +16,13 @@ namespace UI.OfferWindow
         [SerializeField] private Text _sale;
         [SerializeField] private Image _icon;
         [SerializeField] private ItemGrid _itemGrid;
+        
+        protected override void InitializeFields()
+        {
+            _itemGrid.FillGrid(WindowModel.Items.ToList());
+        }
 
-        protected override void ConstructInner()
+        protected override void SubscribeToModel()
         {
             WindowModel.Title.SubscribeToText(_title).AddTo(this);
             WindowModel.Description.SubscribeToText(_description).AddTo(this);
@@ -24,11 +30,10 @@ namespace UI.OfferWindow
             WindowModel.Sale.SubscribeToText(_sale, sale => $"-{sale.ToString()}%").AddTo(this);
             WindowModel.Price.Subscribe(oldPrice => _oldPrice.text = $"${oldPrice:F2}").AddTo(this);
             WindowModel.IconSprite.Subscribe(sprite => _icon.sprite = sprite).AddTo(this);
-            _itemGrid.FillGrid(WindowModel.Items.ToList());
             WindowModel.ItemsCollectionObservable.Subscribe(_ =>
             {
                 _itemGrid.FillGrid(WindowModel.Items.ToList());
-            });
+            }).AddTo(this);
         }
     }
 }

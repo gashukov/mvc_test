@@ -1,10 +1,10 @@
 ﻿using UI.OfferWindow;
 
-namespace UI
+namespace UI.Core
 {
-    public interface IWindow : IView
+    public interface IWindow
     {
-
         public void Construct(IWindowModel windowModel);
+        public void Close();
     }
 }

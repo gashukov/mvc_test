@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using Core;
+using UI.OfferWindow;
 using UnityEngine;
 
-namespace UI
+namespace UI.Core
 {
     public class ItemsSpriteProvider : ISpriteProvider<ItemId>
     {
@@ -17,16 +18,6 @@ namespace UI
         {
             var spriteName = _gameSettings.Items.First(item => item.ItemId.Equals(itemId)).SpriteName;
             return Resources.Load<Sprite>($"Sprites/{spriteName}");
-        }
-    }
-    
-    public class ResourcesSpriteProvider : ISpriteProvider<string>
-    {
-        private GameSettings _gameSettings;
-        
-        public Sprite GetSprite(string name)
-        {
-            return Resources.Load<Sprite>($"Sprites/{name}");
         }
     }
 }

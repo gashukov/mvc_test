@@ -1,6 +1,6 @@
 ﻿using UI.OfferWindow;
 
-namespace UI
+namespace UI.Core
 {
     public class UIService : IUIService
     {
@@ -14,15 +14,14 @@ namespace UI
 
         public void OpenWindow<T>(T windowData) where T : IWindowData
         {
-            //current close
-            
+            _currentWindow?.Close();
             _currentWindow = _windowFactory.Create(windowData);
         }
-    }
-
-    public interface IUIService
-    {
-        public void OpenWindow<T>(T windowData) where T : IWindowData;
         
+        public void OpenWindowDefault<T>() where T : IWindowData, new()
+        {
+            _currentWindow?.Close();
+            _currentWindow = _windowFactory.Create(new T());
+        }
     }
 }

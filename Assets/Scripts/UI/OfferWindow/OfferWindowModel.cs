@@ -1,4 +1,5 @@
 ﻿using System;
+using UI.Core;
 using UniRx;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace UI.OfferWindow
         public StringReactiveProperty IconName { get; }
         public ReadOnlyReactiveProperty<Sprite> IconSprite { get; }
         public FloatReactiveProperty Price { get; }
-        public IntReactiveProperty Sale { get; }
+        public ReactiveProperty<uint> Sale { get; }
 
         public ReadOnlyReactiveProperty<float> PriceWithSale { get; }
 
@@ -24,25 +25,22 @@ namespace UI.OfferWindow
         private readonly ISpriteProvider<ItemId> _itemsSpriteProvider;
         private readonly ISpriteProvider<string> _resourcesSpriteProvider;
 
-
-        private readonly CompositeDisposable _disposable = new CompositeDisposable();
-
         public OfferWindowModel(OfferWindowData offerWindowData, ISpriteProvider<ItemId> itemsSpriteProvider,
             ISpriteProvider<string> resourcesSpriteProvider)
         {
+            WindowId = offerWindowData.WindowId;
             _itemsSpriteProvider = itemsSpriteProvider;
             _resourcesSpriteProvider = resourcesSpriteProvider;
-            WindowId = offerWindowData.WindowId;
-            Title = new StringReactiveProperty(offerWindowData.Title).AddTo(_disposable);
-            Description = new StringReactiveProperty(offerWindowData.Description).AddTo(_disposable);
-            IconName = new StringReactiveProperty(offerWindowData.IconName).AddTo(_disposable);
+            Title = new StringReactiveProperty(offerWindowData.Title).AddTo(Disposable);
+            Description = new StringReactiveProperty(offerWindowData.Description).AddTo(Disposable);
+            IconName = new StringReactiveProperty(offerWindowData.IconName).AddTo(Disposable);
             IconSprite = IconName.Select(_resourcesSpriteProvider.GetSprite).ToReadOnlyReactiveProperty()
-                .AddTo(_disposable);
-            Price = new FloatReactiveProperty(offerWindowData.Price).AddTo(_disposable);
-            Sale = new IntReactiveProperty(offerWindowData.Sale).AddTo(_disposable);
+                .AddTo(Disposable);
+            Price = new FloatReactiveProperty(offerWindowData.Price).AddTo(Disposable);
+            Sale = new ReactiveProperty<uint>(offerWindowData.Sale).AddTo(Disposable);
             PriceWithSale = Price.CombineLatest(Sale, (price, sale) => price * (100 - sale) / 100f)
-                .ToReadOnlyReactiveProperty().AddTo(_disposable);
-            ItemsData = new ReactiveCollection<ItemData>(offerWindowData.Items).AddTo(_disposable);
+                .ToReadOnlyReactiveProperty().AddTo(Disposable);
+            ItemsData = new ReactiveCollection<ItemData>(offerWindowData.Items).AddTo(Disposable);
 
             var observeAdd = ItemsData.ObserveAdd().Select(_ => Unit.Default);
             var observeRemove = ItemsData.ObserveRemove().Select(_ => Unit.Default);
