@@ -15,7 +15,7 @@ namespace UI.Core.Windows
 
         public void Close()
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         
         protected abstract void InitializeFields();

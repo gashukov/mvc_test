@@ -53,7 +53,7 @@ namespace UI.Windows.OfferWindow
             ItemsCollectionObservable = observeAdd
                 .Merge(observeRemove, observeMove, observeReplace, observeCountChanged);
 
-            Items = new ReactiveCollection<(ItemId, int, Sprite)>();
+            Items = new ReactiveCollection<(ItemId, int, Sprite)>().AddTo(Disposable);
             foreach (var data in ItemsData)
             {
                 Items.Add((data.ItemId, data.Count, _itemsSpriteProvider.GetSprite(data.ItemId)));
@@ -66,7 +66,7 @@ namespace UI.Windows.OfferWindow
                 {
                     Items?.Add((data.ItemId, data.Count, _itemsSpriteProvider.GetSprite(data.ItemId)));
                 }
-            });
+            }).AddTo(Disposable);
         }
     }
 }
