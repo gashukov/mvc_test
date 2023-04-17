@@ -9,17 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69244386b93d5a644ab1e8ece52c4025, type: 3}
-  m_Name: GameSettingsInstaller
+  m_Script: {fileID: 11500000, guid: 8a0c59571c8b4bada89b398b85960f5e, type: 3}
+  m_Name: UISettingsInstaller
   m_EditorClassIdentifier: 
-  _gameSettings:
-    Items:
-    - ItemId: 0
-      SpriteName: Butter_Pieces
-    - ItemId: 1
-      SpriteName: Meat_1
-    - ItemId: 2
-      SpriteName: Sliced_Bread
   _uiSettings:
     Windows:
     - WindowId: 0

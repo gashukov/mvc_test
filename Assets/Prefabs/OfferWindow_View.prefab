@@ -1219,6 +1219,7 @@ MonoBehaviour:
   _price: {fileID: 8707354243855013031}
   _oldPrice: {fileID: 1396443229597280751}
   _sale: {fileID: 5594828613080110746}
+  _saleBlob: {fileID: 2486657771107990835}
   _icon: {fileID: 8707354243437092860}
   _itemGrid: {fileID: 157206525703395995}
 --- !u!1 &8707354245268015145

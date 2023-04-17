@@ -1,5 +1,5 @@
-﻿using UI.Core;
-using UI.OfferWindow;
+﻿using UI.Core.Services;
+using UI.Windows.MainWindow;
 using UnityEngine;
 using Zenject;
 
