@@ -5,6 +5,8 @@ using UI.Core.Windows;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using GameLogic.Helpers;
+using UI.Core.Helpers;
 
 namespace UI.Windows.OfferWindow
 {
@@ -28,14 +30,14 @@ namespace UI.Windows.OfferWindow
         {
             WindowModel.Title.SubscribeToText(_title).AddTo(this);
             WindowModel.Description.SubscribeToText(_description).AddTo(this);
-            WindowModel.PriceWithSale.SubscribeToText(_price, price => $"${price:F2}").AddTo(this);
+            WindowModel.PriceWithSale.SubscribeToText(_price, price => price.ToHardPrice()).AddTo(this);
             WindowModel.Sale.Subscribe( sale =>
             {
                 _saleBlob.SetActive(sale != 0);
                 _oldPrice.gameObject.SetActive(sale != 0);
-                _sale.text = $"-{sale.ToString()}%";
+                _sale.text = sale.ToHardSale();
             }).AddTo(this);
-            WindowModel.Price.Subscribe(oldPrice => _oldPrice.text = $"${oldPrice:F2}").AddTo(this);
+            WindowModel.Price.Subscribe(oldPrice => _oldPrice.text = oldPrice.ToHardPrice()).AddTo(this);
             WindowModel.IconSprite.Subscribe(sprite => _icon.sprite = sprite).AddTo(this);
             WindowModel.ItemsCollectionObservable.Subscribe(_ =>
             {
