@@ -5,7 +5,6 @@ using UI.Core.Windows;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
-using GameLogic.Helpers;
 using UI.Core.Helpers;
 
 namespace UI.Windows.OfferWindow

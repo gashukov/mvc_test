@@ -12,8 +12,8 @@ namespace GameLogic.Installers
         }
         private void BindProviders()
         {
-            Container.Bind<ISpriteProvider<ItemId>>().To<ItemsSpriteProvider>().AsTransient();
-            Container.Bind<ISpriteProvider<string>>().To<ResourcesSpriteProvider>().AsTransient();
+            Container.Bind<ISpriteProvider<ItemId>>().To<ItemsSpriteProvider>().AsSingle();
+            Container.Bind<ISpriteProvider<string>>().To<ResourcesSpriteProvider>().AsSingle();
         }
     }
 }
